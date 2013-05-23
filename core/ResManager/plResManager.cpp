@@ -450,6 +450,9 @@ unsigned int plResManager::ReadKeyring(hsStream* S, const plLocation& loc) {
             if (xkey.Exists()) {
                 xkey->setFileOff(key->getFileOff());
                 xkey->setObjSize(key->getObjSize());
+
+                // Trust the keyring-provided key's ID above all others
+                xkey->setID(key->getID());
             } else {
                 keys.add(key);
             }
